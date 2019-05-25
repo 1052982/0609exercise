@@ -2,14 +2,22 @@ package com.directi.training.codesmells.duplicatecode;
 
 public class Statistics
 {
-    public double calculateDifferenceOfAverage(double[] array1, double[] array2)
-    {
-        double sum1 = 0;
-        double average1;
+    private double sum1 = 0;
 
+    public double sumArray(double[] array)
+    {
+        array1=array;
         for (double element : array1) {
             sum1 += element;
         }
+    }
+
+    public double calculateDifferenceOfAverage(double[] array1, double[] array2)
+    {
+        sum1 = 0;
+	double average1;
+
+        sumArray(array1);
         average1 = sum1 / array1.length;
 
         double sum2 = 0;
@@ -25,11 +33,11 @@ public class Statistics
 
     public double calculateSampleVariance(double[] elements)
     {
-        double sum1 = 0;
+        sum1 = 0;
         double average1;
-        for (double element : elements) {
-            sum1 += element;
-        }
+
+        sumArray(elements);
+
         average1 = sum1 / elements.length;
         double temp = 0.0;
         for (double element : elements) {
